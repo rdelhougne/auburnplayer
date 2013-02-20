@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Test</title>
+		<meta charset="UTF-8">
+		<script type="text/javascript" src="jquery-1.9.0.js"></script>
+		<script type="text/javascript" src="../auburnplayer.js"></script>
+		<link href="../auburnplayer.css" rel="stylesheet" type="text/css">
+		<style type="text/css">
+		body{color:#000000;padding:100px 100px;line-height:1.5em;}
+		.bgyes{background-image:url(demoback.gif);}
+		.bgno{background-color:white;}
+		</style>
+		<script type="text/javascript">
+		$(document).ready(function() {
+				var settings = {
+				DefaultVolume: 1,
+				SimultaneousPlayback: false,
+				MediaTimeout: 300,
+				Playlist: true,
+				LoopPlaylist: true,
+				UseBufferBar: true,
+				TitleAboveContainer: false,
+				ShowLoopButton: true,
+				DisplayTime: 'time/duration',
+				AllowTimeChange: true
+				};
+		$(".auburn").player(settings);
+		var button = $(document).find('.pressbutton');
+		button.click(function() {
+				if ($('body').hasClass('bgno')) {
+					$('body').removeClass('bgno').addClass('bgyes');
+				} else {
+					$('body').removeClass('bgyes').addClass('bgno');
+				}
+		});
+		});
+		</script>
+	</head>
+	<body class="bgno">
+	<div style="margin-bottom:100px;background-color:purple;width:200px;height:3em;color:white;" class="pressbutton">Use this button for testing transparent themes</div>
+	<audio class="auburn" naming="Audio">
+		<source src="reverie.ogg" type="audio/ogg">
+		<source src="reverie.mp3" type="audio/mpeg">
+		Your browser does not support the <code>audio</code> element.
+	</audio>
+	<video width="464px" height="262px" poster="http://www.lg-luedenscheid.de/other/poster.png" class="auburn" naming="Video"  preload="metadata">
+		<!-- This sample videos are hosted on a server i own, and yes i have unlimited traffic ;) -->
+		<source src="http://www.lg-luedenscheid.de/other/big_buck_bunny.mp4" type="video/mp4">
+		<source src="http://www.lg-luedenscheid.de/other/big_buck_bunny.webm" type="video/webm">
+		<source src="http://www.lg-luedenscheid.de/other/big_buck_bunny.ogv" type="video/ogg">
+		Your browser does not support the <code>video</code> element.
+	</video>
+	</body>
+</html>
